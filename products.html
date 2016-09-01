@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC>
+<html lang="en">
+<head>
+<title>My assignment</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="template.css" rel="stylesheet" type="text/css" media="screen">
+<link href="template.css" rel="stylesheet" type="text/css" media="print">
+</head>
+
+<body>
+
+<script type="text/javascript">
+var firstname;
+var lname;
+firstname=prompt("please enter your first name","");
+lname=prompt("please enter your last name","");
+alert("Welcome "+firstname + "  " +lname+" ," +"to VS Jewellers");
+var lname=prompt("Hello  "+firstname+" ,\nPlease enter the item names as shown below\n\n\t e.g. choker , bangles, earrings, rings, sets.\n","");
+</script>
+
+<header>
+<h1>VS JEWELLERS</h1>
+</header>
+
+
+<nav class="box-2">
+<a href="index.html" title="home page">HOME</a> |
+<a href="faq.html" title="faq link">FAQ</a> |
+<a href="aboutus.html" title="about page">ABOUT US</a> |
+<a href="support.html" title="support link">SUPPORT</a> |
+<a href="products.html" title="products link">PRODUCTS</a> |
+<a href="catalog.html" title="Catalog link">CATALOG OF PRODUCTS</a> |
+<a href="career.html" title="Career link">CAREER PAGE</a> |
+<a href="whatsnew.html" title="What's new link">WHAT'S NEW PAGE</a> |
+<a href="order.html" title="Order new link">ORDER</a>
+</nav>
+
+
+<script type="text/javascript">
+function jew(image,describe) {
+this.image =image;
+this.describe =describe;
+this.display = displayClass;
+}
+function displayClass() {
+document.write("<img style='width: 80%;height:100%;' class='move' src='"+this.image+"' ></img>");
+document.write("<br clear='all'>","<br>");
+document.write("<span style='color:white'>","Description: ","</span>" + this.describe + "<br>");
+}
+var item1 = new jew("product1.jpg","It is a beautiful choker Handmade 22k gold and has matching drop earrings.");
+var item2 = new jew("product2.jpg","Machine made design 18k gold drop earrings, encrusted with round brilliant cut diamonds in a pave setting..");
+var item3 = new jew("product3.jpg","Handmade oval-shaped 22k white gold bangle with an openable side clasp, encrusted in a circle of dazzling round & princess-cut.");
+var item4 = new jew("product4.jpg","Gorgeous rings made of gold and some diamonds,all are machine made design.");
+var item5 = new jew("product5.jpg","18k white gold circular-shaped pendant set encrusted with gorgeous mixed beed,set is accompanied white gold chain where the pendant is also detachable.");
+
+</script>
+
+
+
+<div class="box-3">
+<br>
+<script type="text/javascript">
+document.write("<span style='color:black'>"+firstname+"</span>");
+</script>
+<br>The below is the product you selected of VS Jewellers!!
+<br><br>
+<article>
+<p>
+<script type="text/javascript">
+	if (lname =="choker")
+		{
+			item1.display();
+			
+		}
+	else if(lname=="earrings")
+		{
+			item2.display();
+		}
+	else if(lname=="bangles")
+		{
+			item3.display();
+		}	
+		
+	else if(lname=="rings")
+		{
+			item4.display();
+		}	
+    else if(lname=="sets")
+		{
+			item5.display();
+		}
+	 else 
+		{
+			document.write("Sorry !!!","<br>","There is no item avaliable for the product you choose.","<br>");
+			document.write("<p> Try once again using the names like choker, bangles, sets, rings, earrings. </p> ");
+		}	
+		
+</script>
+</p>
+</article>
+
+<br>
+
+<aside>
+<ul>
+	<li>See the various degins of VS Jewellers.</li>
+	<li>Have fun of wearing our jewellery</li>
+</ul>
+</aside>
+</div>
+
+<nav class="box-2">
+<a href="index.html" title="home page">HOME</a> |
+<a href="faq.html" title="faq link">FAQ</a> |
+<a href="aboutus.html" title="about page">ABOUT US</a> |
+<a href="support.html" title="support link">SUPPORT</a> |
+<a href="products.html" title="products link">PRODUCTS</a> |
+<a href="catalog.html" title="Catalog link">CATALOG OF PRODUCTS</a> |
+<a href="career.html" title="Career link">CAREER PAGE</a> |
+<a href="whatsnew.html" title="What's new link">WHAT'S NEW PAGE</a> |
+<a href="order.html" title="Order new link">ORDER</a>
+</nav>
+
+<footer>
+Copyright © 2015 VS Jewellers.All Rights are Reserved.
+</footer>
+
+</body>
+</html>

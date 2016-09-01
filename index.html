@@ -1,0 +1,383 @@
+<html lang="en">
+<head>
+<title>My assignment</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="template.css" rel="stylesheet" type="text/css" media="screen">
+<link href="template.css" rel="stylesheet" type="text/css" media="print">
+ <style type="text/css">
+   table, th, td
+  {
+  margin:10px;
+  float:left;
+  font-size: 1.2em;
+  border: 1px solid black;
+  }
+
+  th, td{
+  vertical-align: top;
+  border: none;
+  }
+
+  th{
+  background-color: #000;
+  color: #fff;
+  text-align: left;
+  }
+
+  tr:nth-of-type(even){
+  background-color: #F3F3F3;
+  }
+
+  tr:nth-of-type(odd){
+  background-color:#ddd;
+  }
+  .wish1 { background-color:honeydew; width:60%%;font-size:30px;}
+  .wish2 { background-color:plum; width:60%%;font-size:30px;}
+  .wish3 { background-color:antiquewhite; width:60%%;font-size:30px;}
+  .wish4 { background-color:bisque; width:60%;font-size:30px;}
+
+ 
+  </style>
+</head>
+
+<body onload="startclock();wishMessage();displayAds();showMessage();">
+
+<header>
+<h1>VS JEWELLERS</h1>
+</header>
+
+
+<nav class="box-2">
+<a href="index.html" title="home page">HOME</a> |
+<a href="faq.html" title="faq link">FAQ</a> |
+<a href="aboutus.html" title="about page">ABOUT US</a> |
+<a href="support.html" title="support link">SUPPORT</a> |
+<a href="products.html" title="products link">PRODUCTS</a> |
+<a href="catalog.html" title="Catalog link">CATALOG OF PRODUCTS</a> |
+<a href="career.html" title="Career link">CAREER PAGE</a> |
+<a href="whatsnew.html" title="What's new link">WHAT'S NEW PAGE</a> |
+<a href="order.html" title="Order new link">ORDER</a>
+</nav>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+var timerID = null;
+var timerRunning = false;
+
+function stopclock()
+ {
+	  if (timerRunning)
+	  {
+		clearTimeout(timerID);
+		timerRunning = false;
+	  }
+}
+
+function startclock() 
+{
+ 
+  stopclock();
+  showtime();
+}
+
+function showtime()
+ {
+  var now = new Date();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
+  var timeValue = "" + ((hours>12)?hours-12: hours);
+  timeValue += ((minutes<10)?":0" : ":") + minutes;
+  timeValue += ((seconds<10)?":0" : ":") + seconds;
+  timeValue += ((hours>=12)?" P.M." : " A.M.");
+
+  var timeplace = document.getElementById("time");
+  timeplace.childNodes[0].nodeValue = timeValue;
+  timerID = setTimeout("showtime()", 1000);
+  timerRunning = true;
+
+}
+
+function wishMessage()
+{
+
+	 var now1 = new Date();
+	 var hours1 = now1.getHours();
+	
+		if(hours1 >= 0 && hours1 < 6)
+			{
+				document.getElementById('wish').innerHTML='<h2 class="wish1 move2">What are you doing that early?</h2>';
+				document.body.style.backgroundColor = "salmon"; 
+			}
+		else if(hours1 >= 6 && hours1 < 12)
+			{
+				document.getElementById('wish').innerHTML='<h2 class="wish2 move2">Good Morning </h2>';
+				document.body.style.backgroundColor = "gainsboro"; 
+			}
+		else if(hours1>= 12 && hours1 < 18)
+			{
+				document.getElementById('wish').innerHTML='<h2 class="wish3 move2">Good Afternoon</h2>';
+				document.body.style.backgroundColor = "lightsteelblue"; 
+				
+			}	
+		else 
+			{
+				document.getElementById('wish').innerHTML='<h2 class="wish4 move2">Good Evening</h2>';
+				document.body.style.backgroundColor = "thistle"; 
+			}
+} 
+
+function showMessage()
+{
+
+	var message =  new Array();
+	message[0]="Discretion is the greater part of valor.";
+	message[1]="God helps those who help themselves.";
+	message[2]="Actions speak louder than words.";
+	message[3]="Don't bite the hand that feeds you.";
+	message[4]="Good things come to those who wait.";
+	var quote = document.getElementById('msg');
+	var q= (Math.floor(Math.random() * 5) + 0);
+	quote.innerHTML= message[q];
+
+}
+
+
+ var monthnames = new Array("January", "Februrary", "March", "April","May", "June", "July", "August", "September","October", "November", "December");
+var linkcount=0;
+function addlink(month, day, href) {
+var entry = new Array(3);
+entry[0] = month;
+entry[1] = day;
+entry[2] = href;
+this[linkcount++] = entry;
+}
+
+Array.prototype.addlink = addlink;
+
+linkdays = new Array();
+monthdays = new Array(12);
+monthdays[0]=31;
+monthdays[1]=28;
+monthdays[2]=31;
+monthdays[3]=30;
+monthdays[4]=31;
+monthdays[5]=30;
+monthdays[6]=31;
+monthdays[7]=31;
+monthdays[8]=30;
+monthdays[9]=31;
+monthdays[10]=30;
+monthdays[11]=31;
+
+todayDate=new Date();
+thisday=todayDate.getDay();
+thismonth=todayDate.getMonth();
+thisdate=todayDate.getDate();
+
+thisyear = todayDate.getYear();
+thisyear = thisyear % 100;
+
+thisyear = ((thisyear < 50) ? (2000 + thisyear) : (1900 + thisyear));
+
+if (((thisyear % 4 == 0)&& !(thisyear % 100 == 0))||(thisyear % 400 == 0))
+	{
+		monthdays[1]++;
+	}
+
+startspaces = thisdate;
+while (startspaces > 7) startspaces -=7;
+startspaces = thisday - startspaces + 1;
+
+if (startspaces < 0) {
+	startspaces +=7;
+	}
+document.write("<br><table style='margin:auto' >");
+document.write("<tr><td colspan=7 style='text-align:center'>"+ monthnames[thismonth] + " " + thisyear+ "</td></tr>");
+document.write("<tr>");
+document.write("<td align=center>Su</td>");
+document.write("<td align=center>M</td>");
+document.write("<td align=center>Tu</td>");
+document.write("<td align=center>W</td>");
+document.write("<td align=center>Th</td>");
+document.write("<td align=center>F</td>");
+document.write("<td align=center>Sa</td>");
+document.write("</tr>");
+document.write("<tr>");
+
+for (i=0;i<startspaces;i++) {
+document.write("<td> </td>");
+}
+
+count=1;
+while (count <= monthdays[thismonth]) {
+for (b = startspaces;b<7;b++) {
+linktrue=false;
+document.write("<td>");
+
+for (c=0;c<linkdays.length;c++) {
+if (linkdays[c] != null) {
+if ((linkdays[c][0]==thismonth + 1) && (linkdays[c][1]==count)) {
+document.write(linkdays[c][2]);
+linktrue=true;
+      }
+   }
+}
+
+if (count==thisdate) {
+document.write("<span style='color:white; background:red;'>");
+}
+
+if (count <= monthdays[thismonth]) {
+document.write(count);
+}
+else {
+document.write(" ");
+}
+
+if (count==thisdate) {
+document.write("</span>");
+}
+
+if (linktrue)
+
+document.write("</td>");
+count++;
+}
+document.write("</tr>");
+document.write("<tr>");
+startspaces=0;
+}
+document.write("</table><br>");
+
+var Ads1 = new Object();
+var Ads2 = new Object();
+var Ads3 = new Object();
+var Ads4 = new Object();
+var Ads5 = new Object();
+
+ Ads1.banner = "samsung.jpg";
+ Ads1.url = "http://www.samsung.com";
+ Ads1.id = "2341";
+
+ Ads2.banner = "lg.jpg";
+ Ads2.url = "http://www.lg.com";
+ Ads2.id = "2342";
+ 
+ Ads3.banner = "apple.jpg";
+ Ads3.url = "http://www.apple.com";
+ Ads3.id = "2343";
+ 
+ Ads4.banner = "motorola.jpg";
+ Ads4.url = "http://www.motorola.com";
+ Ads4.id = "2344";
+ 
+ Ads5.banner = "sony.jpg";
+ Ads5.url = "http://www.sony.com";
+ Ads5.id = "2345";
+ 
+ var adsDis = new Array(5);
+ adsDis = [Ads1,Ads2,Ads3,Ads4,Ads5];
+ 
+  function displayAds()
+ {
+
+ 	var a =(Math.floor(Math.random() * 5) + 0);
+	var btn = document.getElementById('ads');
+	btn.action=adsDis[a].url;
+	btn.innerHTML="<input type='hidden' value='"+adsDis[a].id+"'/><input type='image' alt='Ads' style='width:50%; height:50%'  src='"+adsDis[a].banner+"'/>";
+    setTimeout( function () { displayAds() ;}, 5000);
+ }
+	
+
+	function getCookie(name) {
+            var search = escape(name) + "=";
+            var rval = "";
+            var offset = 0;
+            var end = 0;
+
+            if (navigator.cookieEnabled) {
+                if (document.cookie.length > 0) {
+                    offset = document.cookie.indexOf(search);
+                    if (offset != -1) {
+                        offset += search.length;
+                        end = document.cookie.indexOf(";", offset);
+                        if (end == -1) {
+                            end = document.cookie.length;
+                        }
+                        var retVal = unescape(document.cookie.substring(offset, end));
+                        if (isNaN(retVal) && !retVal) {
+                            retVal = 0;
+                        }
+                        return retVal;
+                    } else {
+                        return 0;
+                    }
+                } else {
+                    return 0;
+                }
+            } else {
+                alert("Please enable cookie");
+            }
+        }
+
+
+		
+       function setCookie(name, value) {
+    			document.cookie = name + "=" + value ;
+        }
+        
+               
+        function loadPage(){
+			  lastVisit  = getCookie("lastVisit");
+		
+	    	
+			if (lastVisit != 0) {
+                        document.getElementById("lastVisit").innerHTML = "Last time visited was " + lastVisit;
+            }else
+			 document.write("<h2>This is your first visit(no cookie)</h2>");
+			 
+            setCookie("lastVisit", (new Date()).toString());
+
+        }
+        
+        
+        
+
+	
+</SCRIPT>
+
+<div class="box-3">
+
+<h2 style="color:blue;">Time Now is  <span id="time" style="background: yellow">00:00:00</span></h2>
+<p id="wish"> </p>
+<h2 style="color:green" id="msg"> </h2>
+<h2 id="lastVisit"></h2>
+<script>
+loadPage();
+</script>
+<br>
+<form id="ads" action="" target="_blank"> 
+</form>
+
+</div>
+
+<nav class="box-2">
+<a href="index.html" title="home page">HOME</a> |
+<a href="faq.html" title="faq link">FAQ</a> |
+<a href="aboutus.html" title="about page">ABOUT US</a> |
+<a href="support.html" title="support link">SUPPORT</a> |
+<a href="products.html" title="products link">PRODUCTS</a> |
+<a href="catalog.html" title="Catalog link">CATALOG OF PRODUCTS</a> |
+<a href="career.html" title="Career link">CAREER PAGE</a> |
+<a href="whatsnew.html" title="What's new link">WHAT'S NEW PAGE</a> |
+<a href="order.html" title="Order new link">ORDER</a>
+</nav>
+
+<footer>
+Copyright © 2015 VS Jewellers.All Rights are Reserved.
+</footer>
+
+</body>
+</html>

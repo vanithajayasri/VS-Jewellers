@@ -1,0 +1,429 @@
+<html lang="en">
+<head>
+<title>My assignment</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="template.css" rel="stylesheet" type="text/css" media="screen">
+<link href="template.css" rel="stylesheet" type="text/css" media="print">
+<style>
+td { border:1px black solid;}
+
+</style>
+ </head>
+
+<body>
+
+<header>
+<h1>VS JEWELLERS</h1>
+</header>
+
+<nav class="box-2">
+<a href="index.html" title="home page">HOME</a> |
+<a href="faq.html" title="faq link">FAQ</a> |
+<a href="aboutus.html" title="about page">ABOUT US</a> |
+<a href="support.html" title="support link">SUPPORT</a> |
+<a href="products.html" title="products link">PRODUCTS</a> |
+<a href="catalog.html" title="Catalog link">CATALOG OF PRODUCTS</a> |
+<a href="career.html" title="Career link">CAREER PAGE</a> |
+<a href="whatsnew.html" title="What's new link">WHAT'S NEW PAGE</a> |
+<a href="order.html" title="Order new link">ORDER</a>
+</nav>
+
+<script>
+  
+
+function validateall()
+{	
+  var i,comentIndex;
+  for(i=0;i<myForm.elements.length;i++){
+	if(myForm.elements[i] == myForm.comment){
+		comentIndex = i;
+		break;
+	}
+  }
+  for(i=0; i<=comentIndex; i++)
+  {	
+	var inputData = myForm.elements[i].value.trim();
+	
+	if (inputData == "" || inputData == null)
+				{	
+					var n=myForm.elements[i].id ;
+					alert("Please enter "+n);
+					myForm.elements[i].focus();
+					myForm.elements[i].select();
+					return false;
+					
+				}
+
+		if (myForm.elements[i]== myForm.phone)
+			
+			{
+				var text=myForm.phone.value;
+				//var pattern=new RegExp("\(\d{3}\)\s\d{3}-\d{4}"); 
+				var pattern=/^\(\d{3}\)\s\d{3}-\d{4}$/;  
+				var res = pattern.test(text);
+				if (!(res))
+							{
+									alert("please enter the phone number in SPECIFIED FORMAT");
+									myForm.elements[i].focus();
+									myForm.elements[i].select();
+									return false;	
+										
+							}
+			
+			}
+		if (myForm.elements[i]== myForm.zip)
+			
+			{
+				var text= myForm.zip.value;
+				var pattern=new RegExp("^\\d{5}(-\\d{4})?$");  
+				var res = pattern.test(text);
+				if (!(res))
+							{
+									alert("please enter the Zip in SPECIFIED FORMAT");
+									myForm.elements[i].focus();
+									myForm.elements[i].select();
+									return false;	
+														
+							}
+				
+			}
+		if (myForm.elements[i]== myForm.ccnum)
+			
+			{
+				var text= myForm.ccnum.value;
+				var pattern=/^\d{16}$/;  
+				var res = pattern.test(text);
+				if (!(res))
+							{
+									alert("please enter the credit card number in SPECIFIED FORMAT");
+									myForm.elements[i].focus();
+									myForm.elements[i].select();
+									return false;	
+														
+							}
+				
+			}
+			
+		if (myForm.elements[i]== myForm.ccexpire)
+		{
+			var text= myForm.ccexpire.value;
+			var pattern= /^0?[1-9]|1[0-2]\/d{4}$/;  
+			var res = pattern.test(text);
+			
+			if(res){
+				var ccexpire = myForm.ccexpire.value;
+				var dateparts = ccexpire.split("/");
+				var ccexpDate = new Date();
+				ccexpDate.setMonth(dateparts[0]);
+				ccexpDate.setFullYear(dateparts[1]);
+				if ((ccexpDate - (new Date())) < 0) 
+				{
+					alert("Please enter a VALID Credit Card Expiration date");
+					myForm.elements[i].focus();
+					myForm.elements[i].select();
+					return false;
+				}
+			}else
+			{
+					alert("please enter the credit card expire date in SPECIFIED FORMAT");	
+					myForm.elements[i].focus();
+					myForm.elements[i].select();
+					return false;
+			}
+		}
+		if (myForm.elements[i] == myForm.cctype)
+			 {
+                    if (myForm.elements[i].selectedIndex == 0)
+					{
+                        alert("Please select a value from the drop down.");
+                        myForm.elements[i].focus();
+                        return false;
+                    }
+		}	
+		
+   }
+   
+}
+
+function Calc()
+{
+		var Chokerp1 = document.myForm.p1q1.value * 7850;
+		var Chokerp2 = document.myForm.p1q2.value * 9850;
+		 
+		var earingp1 = document.myForm.p2q1.value * 850;
+		var earingp2 = document.myForm.p2q2.value * 1850;
+		 
+		var banglep1 = document.myForm.p3q1.value * 5950;
+		var banglep2 = document.myForm.p3q2.value * 1950;
+		 
+		var ringp1 = document.myForm.p4q1.value * 1550;
+		var setp2 = document.myForm.p4q2.value * 1250;
+					
+		document.myForm.p1q1total.value	= Chokerp1;	
+		document.myForm.p1q2total.value	= Chokerp2;
+		
+		document.myForm.p2q1total.value	= earingp1	
+		document.myForm.p2q2total.value	= earingp2;
+		
+		document.myForm.p3q1total.value	= banglep1;
+		document.myForm.p3q2total.value	= banglep2;
+		
+		document.myForm.p4q1total.value	= ringp1;	
+		document.myForm.p4q2total.value	= setp2;
+			
+		var subtotal1=	Chokerp1 + Chokerp2;
+		var subtotal2=	earingp1 + earingp2;
+		var subtotal3=	banglep1 + banglep2;
+		var subtotal4=	ringp1 +setp2;
+		
+		document.myForm.p1subtotal.value = subtotal1;
+		document.myForm.p2subtotal.value = subtotal2;
+		document.myForm.p3subtotal.value = subtotal3;
+		document.myForm.p4subtotal.value = subtotal4;
+		
+		
+		// Total of SubTotals
+		var allSubtotal =  eval(subtotal1 +  subtotal2 +  subtotal3+ subtotal4) ;
+		document.myForm.total.value= allSubtotal;
+	
+	   //  Sales Tax for Total
+		var  salesTax = eval((0.0825 * allSubtotal).toFixed(2));
+		document.myForm.sales.value = salesTax;
+		
+		var totalAlongSalesTax = eval( allSubtotal + salesTax);
+		document.myForm.total_includeSales.value = totalAlongSalesTax;
+		
+		if(totalAlongSalesTax >0)
+			{
+				var shipHan =30;
+			}
+			else
+			{
+				var shipHan =0;
+			}
+			
+		document.myForm.shipAhand.value = shipHan
+		
+		var grandTotal = eval(totalAlongSalesTax +shipHan);
+		document.myForm.grandTot.value = grandTotal;
+
+		
+}
+
+
+
+
+ 
+
+</script>
+
+<form  name="myForm" class="box-3"  method="POST" action="http://voyager.deanza.edu/~hso/cgi-bin/form420.cgi" onsubmit=" return validateall()">
+<h3 align="center"> CUSTOMER DETAILS </h3>
+<table align="center" style="font-size:15pt" border=2 bgcolor="springgreen" width="70%" height="600px">
+
+		<tr>
+			<th align="right">First Name</th>
+			<td ><input type="text" name="first" id="first name" size="50" maxlength="30"></td>
+		</tr>
+	
+		<tr>
+			<th align="right">Last Name</th>
+			<td ><input type="text" name="last" id="last name" size="50" maxlength="30"></td>
+		</tr>
+		
+		<tr>
+			<th align="right">Street Address</th>
+			<td><input type="text" name="address" id="address" size="50" maxlength="150"></td>
+		</tr>
+		
+		<tr>
+			<th align="right">City</th>
+			<td><input type="text" name="city" id="city" size="50" maxlength="20"></td>
+		</tr>
+	
+		<tr>
+			<th align="right">State</th>
+			<td><input type="text" name="state" id="state" size="50" maxlength="20"></td>
+		</tr>
+	
+		
+		<tr>
+			<th align="right">Zipcode ( XXXXX(5) or XXXXXXXXX(9))</th>
+			<td><input type="zip" name="zip" id="zipcode"  size="10" maxlength="10"></td>
+		</tr>
+		
+		<tr>
+			<th align="right">Telephone Number  (XXX) XXX-XXXX</th>
+			<td><input type="tel" name="phone" id="phone number"  size="16" maxlength="16"></td>
+		</tr>
+		
+		<tr>
+			<th align="right">E-mail</th>
+			<td><input type="email" name="email" id="email"></td>
+		</tr>
+		
+		<tr>
+			<th align="right">Credit Card Number</th>
+			<td><input type="number" name="ccnum" id="Credit card number" size="16" maxlength="16"></td>
+		</tr>
+		
+		<tr>
+			   <th align="right">Credit Card Type</td>
+			   <td>
+					<select name="cctype" id="credit card type">
+						<option selected > Select Credit Card Type</option>
+						<option> Visa</option>
+						<option>Master Card</option>
+						<option>Discover Card</option>
+						<option>American Express</option>
+					</select>
+				</td>
+		</tr>
+		
+		<tr>
+			<th align="right">Credit Card Expiration Date (mm/yyyy)</th>
+			<td><input  name="ccexpire" id="credit card expiration date" size="7" maxlength="7"></td>
+		</tr>
+		
+		<tr>
+			<th align="right">Comments</th>
+			<td><textarea name="comment" id="comments" cols="45" rows="4" > </textarea></td>
+		</tr>
+		
+		
+
+</table>
+<br><br><br>
+<h2> ORDER FORM</h2>
+<table align="center" style="font-size:15pt" border=2 bgcolor="springgreen" width="70%" height="600px">
+<tr  height="80px">
+	<th>CATEGORY</th>
+	<th>DESCRIPTION</th>
+	<th>UNIT PRICE</th>
+	<th>QUANTITY</th>
+	<th>TOTAL PRICE</th>
+</tr>
+<tr height="60px">
+	<td rowspan="2"> 1 </td>
+	<td>Choker (antique gold)</td>
+	<td> 7850 $ </td>
+	<td><input  name="p1q1" id="p1qua1" size="20"  onkeyup = "Calc()"> </td>
+	<td><input name="p1q1total" id="p1q1tot" size="20" maxlength="6"> </td>
+</tr >
+<tr height="60px">
+	<td>Choker (gold)</td>
+	<td>9850 $</td>
+	<td><input  name="p1q2" id="p1qua2" size="20"  onkeyup = "Calc()"> </td>
+	<td><input  name="p1q2total" id="p1q2tot" size="20"> </td>
+</tr>
+<tr height="50px">
+	<td colspan="4" style="text-align:right">Subtotal $</td>
+	<td><input  name="p1subtotal" id="p1tot" size="20" ></td>
+</tr>
+<tr height="60px">
+	<td rowspan="2"> 2 </td>
+	<td>Earrings (gold)</td>
+	<td> 850$ </td>
+	<td><input  name="p2q1" id="p2qua1" size="20" onkeyup = "Calc()"> </td>
+	<td><input  name="p2q1total" id="p2q1tot" size="20"> </td>
+</tr >
+<tr height="60px">
+	<td>Earrings ( antique gold)</td>
+	<td>1850$</td>
+	<td><input  name="p2q2" id="p2qua2" size="20" onkeyup = "Calc()"> </td>
+	<td><input  name="p2q2total" id="p2q2tot" size="20"> </td>
+</tr>
+<tr height="50px" >
+	<td colspan="4" style="text-align:right">Subtotal $</td>
+	<td><input  name="p2subtotal" id="p2tot" size="20"></td>
+</tr>
+<tr height="60px">
+	<td rowspan="2"> 3 </td>
+	<td>Bangles (gold)</td>
+	<td> 5950$ </td>
+	<td><input  name="p3q1" id="p3qua1" size="20" onkeyup = "Calc()"> </td>
+	<td><input  name="p3q1total" id="p3q1tot" size="20"> </td>
+</tr >
+<tr height="60px">
+	<td>Bangles ( white gold)</td>
+	<td>1950$</td>
+	<td><input name="p3q2" id="p3qua2" size="20" onkeyup = "Calc()"> </td>
+	<td><input  name="p3q2total" id="p3q2tot" size="20"> </td>
+</tr>
+<tr height="50px" >
+	<td colspan="4" style="text-align:right">Subtotal $</td>
+	<td><input name="p3subtotal" id="p3tot" size="20"></td>
+</tr>
+<tr height="60px">
+	<td rowspan="2"> 4 </td>
+	<td>Rings</td>
+	<td> 1550$ </td>
+	<td><input  name="p4q1" id="p4qua1" size="20" onkeyup = "Calc()"> </td>
+	<td><input name="p4q1total" id="p4q1tot" size="20"> </td>
+</tr >
+<tr height="60px">
+	<td>Sets</td>
+	<td>1250$</td>
+	<td><input  name="p4q2" id="p4qua2" size="20" onkeyup = "Calc()"> </td>
+	<td><input  name="p4q2total" id="p4q2tot"size="20"> </td>
+</tr>
+<tr height="50px">
+	<td colspan="4"style="text-align:right">Subtotal $</td>
+	<td><input name="p4subtotal" id="p4tot" size="20"></td>
+</tr>
+	<tr>
+		<td  colspan="4" style="text-align:right">Total $</td>
+		<td><input  name="total" id="tot " size="20"></td>
+	</tr>
+	
+	<tr>
+		<td  colspan="4" style="text-align:right">Sales Tax(8.25%) $</td>
+		<td><input  name="sales" id="sal " size="20"></td>
+	</tr>
+	
+	<tr>
+		<td  colspan="4" style="text-align:right">Total $</td>
+		<td><input  name="total_includeSales" id="tis " size="20"></td>
+	</tr>
+	
+	<tr>
+		<td  colspan="4" style="text-align:right">Shipping and Handling $</td>
+		<td><input  name="shipAhand" id="sah" size="20"></td>
+	</tr>
+	
+	<tr>
+		<td  colspan="4" style="text-align:right">Grand Total $</td>
+		<td><input  name="grandTot" id="gtotal " size="20"></td>
+	</tr>
+	
+	<tr>
+		<td align='left'colspan="5"><input name="myemail" type="hidden" value="vanitha.gurram@gmail.com" ></td>
+	</tr>
+
+</table>
+<p style="text-align:center">
+<input type="submit" name="submit" id="submit button" value="Submit" style="background-color:blue; color:yellow;font-size:20pt";>&nbsp; &nbsp;
+<input type="reset" name="reset" id="reset button" value="Reset" style="background-color:blue; color:yellow; font-size:20pt";>
+</p>
+</form>
+
+
+<nav class="box-2">
+<a href="index.html" title="home page">HOME</a> |
+<a href="faq.html" title="faq link">FAQ</a> |
+<a href="aboutus.html" title="about page">ABOUT US</a> |
+<a href="support.html" title="support link">SUPPORT</a> |
+<a href="products.html" title="products link">PRODUCTS</a> |
+<a href="catalog.html" title="Catalog link">CATALOG OF PRODUCTS</a> |
+<a href="career.html" title="Career link">CAREER PAGE</a> |
+<a href="whatsnew.html" title="What's new link">WHAT'S NEW PAGE</a> |
+<a href="order.html" title="Order new link">ORDER</a>
+</nav>
+
+<footer>
+Copyright © 2015 VS Jewellers.All Rights are Reserved.
+</footer>
+
+</body>
+</html>

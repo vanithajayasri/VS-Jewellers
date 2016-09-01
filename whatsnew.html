@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC>
+<html lang="en">
+<head>
+<title>my assignment</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="template.css" rel="stylesheet" type="text/css" media="screen">
+<link href="template.css" rel="stylesheet" type="text/css" media="print">
+<style>
+#foo
+{
+	font-size:15pt;
+	font-weight: bold;
+	color:white;
+	width:10%;
+	height:280px;
+	text-align:center;
+	background-color:dimgray;
+	position: absolute;
+    top: 200px;
+	left:20%;
+	border: 3px solid #73AD21;
+}
+
+</style>
+
+<script type="text/javascript">
+function doall()
+{
+		var movImage = document.getElementById("foo");
+		document.addEventListener("click", getClickPosition, false);
+		function getClickPosition(e)
+		 {
+			
+			var xPosition = 0; 
+			var yPosition = 0;
+			xPosition = e.pageX;
+			yPosition = e.pageY;
+			var xOffset = e.pageX-e.clientX;
+			var yOffset = e.pagey-e.clienty;
+			if(xOffset || yOffset){
+				xPosition = e.clientX;
+				yPosition = e.clientY;
+			}
+
+		  
+		    movImage.style.left = xPosition - (movImage.clientWidth / 2) + "px";
+		    movImage.style.top  = yPosition -(movImage.clientHeight / 2) + "px";
+		}
+ }
+</script>
+
+</head>
+<body onload="doall()">
+
+<header>
+<h1>VS JEWELLERS</h1>
+</header>
+
+<nav class="box-2">
+<a href="index.html" title="home page">HOME</a> |
+<a href="faq.html" title="faq link">FAQ</a> |
+<a href="aboutus.html" title="about page">ABOUT US</a> |
+<a href="support.html" title="support link">SUPPORT</a> |
+<a href="products.html" title="products link">PRODUCTS</a> |
+<a href="catalog.html" title="Catalog link">CATALOG OF PRODUCTS</a> |
+<a href="career.html" title="Career link">CAREER PAGE</a> |
+<a href="whatsnew.html" title="What's new link">WHAT'S NEW PAGE</a> |
+<a href="order.html" title="Order new link">ORDER</a>
+</nav>
+
+<div id="foo">
+This is What's new today<br>
+<img src="newimage.jpg" alt="my new">
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<nav class="box-2">
+<<a href="index.html" title="home page">HOME</a> |
+<a href="faq.html" title="faq link">FAQ</a> |
+<a href="aboutus.html" title="about page">ABOUT US</a> |
+<a href="support.html" title="support link">SUPPORT</a> |
+<a href="products.html" title="products link">PRODUCTS</a> |
+<a href="catalog.html" title="Catalog link">CATALOG OF PRODUCTS</a> |
+<a href="career.html" title="Career link">CAREER PAGE</a> |
+<a href="whatsnew.html" title="What's new link">WHAT'S NEW PAGE</a> |
+<a href="order.html" title="Order new link">ORDER</a>
+</nav>
+
+<footer>
+Copyright © 2015 VS Jewellers.All Rights are Reserved.
+</footer>
+
+</body>
+</html>
